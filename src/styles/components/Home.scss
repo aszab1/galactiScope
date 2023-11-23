@@ -1,0 +1,27 @@
+.readMore.showMore:hover:after {
+  content: 'Read more';
+}
+
+.readMore.showLess:hover::after {
+  content: 'Read less';
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+body {
+  position: relative;
+}
+
+.containerCard {
+  padding-top: 100px;
+}

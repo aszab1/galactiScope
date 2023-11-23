@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/main.scss'
 
 // Loaders
-import { getPicOfDay } from './utils/loaders'
+import { getPicOfDay, getRandomPictures, getSinglePicture } from './utils/loaders'
 
 const router = createBrowserRouter([
   {
@@ -27,11 +27,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/RandomPictures',
-        element: <RandomPictures />
+        element: <RandomPictures />,
+        loader: getRandomPictures
       },
       {
-        path: '/RandomPicSelect',
-        element: <RandomPicSelect />
+        path: '/RandomPictures/:date',
+        element: <RandomPicSelect />,
+        loader: async ({ params }) => getSinglePicture(params.date)
       }
     ]
   }
