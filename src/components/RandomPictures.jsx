@@ -9,73 +9,68 @@ import Col from 'react-bootstrap/Col';
 
 export default function RandomPictures() {
   const imagesPerPage = 20;
+  const images = useLoaderData();
   const [apodImages, setApodImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [maxPages, setMaxPages] = useState(5)
+  const [maxPages, setMaxPages] = useState(0);
 
   useEffect(() => {
-    fetchMoreImages();
-  }, []);
+    const fetchImages = async () => {
+      try {
+        setLoading(true);
 
-  const fetchMoreImages = async () => {
-    try {
-      setLoading(true);
-      const start = currentPage * imagesPerPage;
-      const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=pW4NzGSYWgso3Cx1tqSsFRffDSMVUxF8y9yuaezz&count=${imagesPerPage}`);
-      const newImages = await response.json();
-      setApodImages(prevImages => [...prevImages, ...newImages]);
-      setLoading(false); // Set loading to false after updating the state
-      console.log(currentPage);
-      console.log(apodImages);
-      console.log(currentImages);
-    } catch (error) {
-      if(error.response.status === 404) {
-      //console.error('Error fetching random images:', error);
-      //setLoading(false); // Set loading to false in case of an error
-      setMaxPages(currentPage)
-    } else {
-      console.log(error)
-    }
-  }
-  }
+        const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=pW4NzGSYWgso3Cx1tqSsFRffDSMVUxF8y9yuaezz&count=${imagesPerPage}`);
+        const newImages = await response.json();
+        setApodImages(newImages);
+        setMaxPages(Math.ceil(newImages.length / imagesPerPage));
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching random images:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   const handlePrevious = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      console.log(currentPage)
     }
-  
   };
 
   const handleNext = () => {
-    if(currentPage < maxPages) {
-      setCurrentPage(prevPage => prevPage + 1);
+    if (currentPage < maxPages) {
+      setCurrentPage(currentPage + 1);
     }
-    }
+  };
 
-    const startIndex = currentPage * imagesPerPage;  
-    const endIndex = startIndex + imagesPerPage;
-    const currentImages = apodImages.slice(startIndex, endIndex);
 
- return (
+  const start = (currentPage - 1) * imagesPerPage;
+  const end = start + imagesPerPage;
+  const currentImages = apodImages.slice(start, end);
+
+  return (
     <>
-    <h1 className='text-center bold display-3 mb-4'>Celestial Captures</h1>
-    <div className='btnContainer'>
-      <button onClick={handlePrevious} disabled={currentPage === 1}>
-        Previous page
-      </button>
-      <button onClick={handleNext}>Next page</button>
-      </div>  
-      
+      <h1 className='text-center bold display-3 mb-4'>Celestial Captures</h1>
+      <div className='btnContainer'>
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
+          Previous page
+        </button>
+        <button onClick={handleNext}>
+          Next page
+        </button>
+      </div>
+
       <Container fluid>
         <Row className='picture-row' style={{ marginTop: '5px' }}>
-          {apodImages.map((picture) => {
+          {currentImages.map((picture, index) => {
             const { date, explanation, url, title } = picture;
             return (
               <Col
                 as={Link}
-                key={title}
+                key={`${title}-${index}`}
                 xs={3}
                 md={3}
                 lg={3}
@@ -89,5 +84,5 @@ export default function RandomPictures() {
         </Row>
       </Container>
     </>
-  )
+  );
 }
