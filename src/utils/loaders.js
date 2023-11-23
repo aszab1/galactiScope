@@ -11,6 +11,6 @@ export async function getRandomPictures() {
 }
 
 export async function getSinglePicture(date) {
-  const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=pW4NzGSYWgso3Cx1tqSsFRffDSMVUxF8y9yuaezz&date${date}`)
+  const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=pW4NzGSYWgso3Cx1tqSsFRffDSMVUxF8y9yuaezz&date=${date}`)
   return response.json()
 }

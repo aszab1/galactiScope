@@ -22,3 +22,22 @@
     }
   }
 }
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    background-color: rgb(173, 215, 230);
+    padding: 13px;
+    border: 0;
+    color: #fefbef;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

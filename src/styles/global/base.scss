@@ -7,3 +7,17 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.centered {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-wrapper {
+  margin: 20px auto;
+  .spinner{
+    width: 30px;
+  }
+}
