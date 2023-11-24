@@ -1,0 +1,15 @@
+.btn.btn:disabled{
+  background: lightgrey;
+}
+.btn.btn {
+  background: rgb(173, 215, 230);
+}
+
+div .video {
+  background-color: red;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}

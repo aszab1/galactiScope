@@ -25,7 +25,7 @@ export default function Home() {
     <Container className="containerCard">
     <div className="mt-5">
     <div className="d-flex justify-content-center">
-  <Card className="cardImage" class="card offset-3" style={{ width: '40rem' }}>
+  <Card className="cardImage" class="card offset-3" style={{ width: '60rem' }}>
   <Card.Img variant="top" src={url} />
     <Card.Body>
       <Card.Title>Picture of the Day</Card.Title>
