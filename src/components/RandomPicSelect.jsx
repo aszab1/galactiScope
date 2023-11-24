@@ -32,7 +32,7 @@ export default function RandomPicSelect(){
   <Card.Img variant="top" src={url} />
     <Card.Body>
       <Card.Title>{title}</Card.Title>
-      <Card.Subtitle>By{copyright}</Card.Subtitle>
+      <Card.Subtitle>By {copyright}</Card.Subtitle>
       <Card.Text>{showText}
       <span className={`readMore ${expand ? 'showLess' : 'showMore'}`} 
       style={{ color: 'blue', cursor: 'pointer' }} onClick={toggleExpand}>
