@@ -6,7 +6,7 @@ import backgroundImage from "./pictures/IrF.gif"
 export default function Home() {
   const picOfDay = useLoaderData()
   const [ expand, setExpand ] = useState(false)
-  const { copyright, date, explanation, url } = picOfDay
+  const { explanation, url } = picOfDay
   
   const showText = expand ? explanation : `${explanation.substring(0, 150)}`
 
@@ -19,7 +19,7 @@ export default function Home() {
   style= {{
     backgroundImage: "url(" + backgroundImage + ")",
     backgroundSize: "cover",
-    height: "100vh"
+    height: "200vh"
   }}>
     
     <Container className="containerCard">
