@@ -22,7 +22,7 @@ export default function RandomPicSelect(){
   style= {{
     backgroundImage: "url(" + backgroundImage + ")",
     backgroundSize: "cover",
-    height: "200vh"
+    height: "150vh"
   }}>
     
     <Container className="containerCard">
