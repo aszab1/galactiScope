@@ -1,7 +1,7 @@
 
 
+![image 91](https://github.com/aszab1/galactiScope/assets/145586216/a960eae8-8fce-4480-8871-530634cc04a3)
 
-![image 90](https://github.com/aszab1/galactiScope/assets/145586216/9bc4a3a5-0ed2-4266-a453-98567c8e9943)
 
 
 ## ReadMe GalacticScope
